@@ -1,10 +1,15 @@
 import babel from "@babel/core";
 import fs from "fs/promises";
 import path from "path";
+import type { OnPreBuild } from "../node_modules/@netlify/build/types/netlify_event_handler";
 
-export const onPreBuild = async function () {
+export const onPreBuild: OnPreBuild = async function ({ utils }) {
   const gitHead = process.env.HEAD;
   if (!gitHead) {
+    utils.status.show({
+      title: "Xata",
+      summary: "[Error] No git HEAD found!",
+    });
     console.log("No git HEAD found!");
     return;
   }
@@ -31,6 +36,10 @@ export const onPreBuild = async function () {
 
       if (!result?.code) {
         success = false;
+        utils.status.show({
+          title: "Xata",
+          summary: `[Error] ${xataClientFile} was not transformed!`,
+        });
         console.log(`${xataClientFile} was not transformed!`);
         return;
       }
@@ -38,11 +47,19 @@ export const onPreBuild = async function () {
       await fs.writeFile(xataClientFile, result.code);
     } catch {
       success = false;
+      utils.status.show({
+        title: "Xata",
+        summary: `[Error] @xata.io/client package was not found!`,
+      });
       console.log(`@xata.io/client package was not found!`);
     }
   }
 
   if (success) {
+    utils.status.show({
+      title: "Xata",
+      summary: `Inject "${gitHead}" as getGitBranch() output in @xata.io/client`,
+    });
     console.log(
       `Inject "${gitHead}" as getGitBranch() output in @xata.io/client`
     );
