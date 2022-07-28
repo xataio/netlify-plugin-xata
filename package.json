@@ -13,6 +13,7 @@
   },
   "keywords": [
     "netlify",
+    "netlify-plugin",
     "xata",
     "plugin"
   ],
@@ -23,7 +24,8 @@
   },
   "homepage": "https://github.com/xataio/netlify-plugin-xata#readme",
   "dependencies": {
-    "@babel/core": "^7.18.9"
+    "@babel/core": "^7.18.9",
+    "@netlify/build": "^27.4.2"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.19",
