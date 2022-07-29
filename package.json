@@ -1,6 +1,6 @@
 {
   "name": "netlify-plugin-xata",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "description": "Sync your pull-request preview's git branch with your xata branch",
   "main": "dist/index.js",
