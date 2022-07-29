@@ -2,26 +2,18 @@
 
 # Netlify Xata Plugin
 
-The Netlify Xata Plugin enables to sync your xatabase branch with your Netlify's pull-request previews.
+The Netlify Xata Plugin enables you to sync your Xata branch with Netlify's deploy previews. If you have a pull-request with `my-feature` as the git branch name, and a `my-feature` [branch in Xata](https://docs.xata.io/concepts/branches), this plugin will point your deploy preview to the respective Xata branch. You can then review your next amazing feature with the right branch of your database!
 
-As example, if you have a pull-request with `my-feature` as git branch name and a `my-feature` branch in xata.
-This plugin will take care to point the correct xata branch inside the preview. You can then review your next amazing feature with the associated xatabase!
+This plugin depends on the [Xata SDK (Software Development Kit)](https://docs.xata.io/sdk/getting-started), which is easiest to get started with using the [Xata CLI (Command Line Interface)](https://docs.xata.io/cli/getting-started). Those links can help you get set up with the SDK.
 
 ## Installation
 
-### Installing the client sdk
+To install this Netlify build plugin, you have two options:
 
-This plugin inject the git branch information into `@xata.io/client`, the easiest way to get started is to used our CLI.
+- You can install it via [the Netlify UI (User Interface)](https://docs.netlify.com/configure-builds/build-plugins/#ui-installation). Here, you can search for "Xata" and install the plugin.
 
-https://docs.xata.io/cli/getting-started
+- You can also install it using [file-based plugin installation](https://docs.netlify.com/configure-builds/build-plugins/#file-based-installation) by referencing the plugin as `netlify-plugin-xata` in your `netlify.toml`.
 
-### Installing the Netlify build plugin
+## Feedback?
 
-You have two options:
-
-- [The Netlify UI](https://docs.netlify.com/configure-builds/build-plugins/#ui-installation).
-  Here, you can search for "Xata" and install the plugin.
-
-- [File-based plugin installation](https://docs.netlify.com/configure-builds/build-plugins/#file-based-installation).
-  You can install the plugin as `netlify-plugin-xata` in your `netlify.toml`
-  file.
+As of right now, the only feature supported by this plugin is branch inference for deploy previews on Netlify. If you have ideas for more features that can help streamline your workflows on Netlify, please let us know by [opening an issue](issues/new). 
